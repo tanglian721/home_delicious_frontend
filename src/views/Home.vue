@@ -33,7 +33,7 @@ export default {
 @import "../assets/style/variable.scss";
 .home {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $bgc;
   position: relative;
   .logo-title {
@@ -65,8 +65,8 @@ export default {
   }
   .food-card-list {
     width: 100%;
-    height: 200vh;
-    background-color: rgb(107, 138, 58);
+    min-height: 22vh;
+    // background-color: rgb(107, 138, 58);
   }
   .bottom-bar {
     z-index: 50;
