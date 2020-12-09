@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import BottomBar from '../components/bottomBar.vue';
-import CategoryBar from '../components/categoryBar.vue';
-import FoodCardList from '../components/foodCardList.vue';
-import LogoTitle from '../components/logoTitle.vue';
-import SearchBar from '../components/searchBar.vue';
-import TrendFoodList from '../components/trendFoodList.vue';
+import BottomBar from "../components/bottomBar.vue";
+import FoodCardList from "../components/foodCardList.vue";
+import LogoTitle from "../components/logoTitle.vue";
+import SearchBar from "../components/searchBar.vue";
+import TrendFoodList from "../components/trendFoodList.vue";
+import CategoryBar from "../components/categoryBar.vue";
 export default {
   name: "Home",
   components: {
@@ -25,54 +25,56 @@ export default {
     TrendFoodList,
     CategoryBar,
     FoodCardList,
-  }
+  },
 };
-
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
-.home{
+.home {
   width: 100vw;
   height: 100vh;
-  background-color:$bgc;
+  background-color: $bgc;
   position: relative;
-  .logo-title{
+  .logo-title {
     width: 70%;
     height: 10vh;
     margin-left: 15%;
   }
-  .search-bar{
+  .search-bar {
+    z-index: 20;
     width: 100%;
     height: 8vh;
-    background-color: rgb(104, 71, 255);
+    background-color: $bgc;
     position: sticky;
     top: 0;
   }
-  .trend-food-list{
+  .trend-food-list {
+    box-sizing: border-box;
     width: 100%;
     height: 40vh;
-    background-color: rgb(138, 58, 58);
+    overflow: hidden;
   }
-  .category-bar{
+  .category-bar {
     width: 100%;
     height: 10vh;
-    background-color: #fff;
+    background-color: $bgc;
+
     position: sticky;
     top: 8vh;
   }
-  .food-card-list{
+  .food-card-list {
     width: 100%;
     height: 200vh;
     background-color: rgb(107, 138, 58);
   }
-  .bottom-bar{
+  .bottom-bar {
     z-index: 50;
     width: 100%;
     height: 10vh;
     background-color: #fff;
     position: fixed;
-    bottom:0
+    bottom: 0;
   }
 }
 </style>
