@@ -56,22 +56,22 @@ export default {
     overflow: hidden;
   }
   .category-bar {
+    z-index: 20;
     width: 100%;
     height: 10vh;
     background-color: $bgc;
-
     position: sticky;
     top: 8vh;
   }
   .food-card-list {
     width: 100%;
-    min-height: 22vh;
+    min-height: 24vh;
     // background-color: rgb(107, 138, 58);
   }
   .bottom-bar {
     z-index: 50;
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     background-color: #fff;
     position: fixed;
     bottom: 0;
