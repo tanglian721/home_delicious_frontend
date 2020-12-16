@@ -3,8 +3,8 @@
     <logo-title />
     <search-bar />
     <trend-food-list />
-    <category-bar />
-    <food-card-list />
+    <category-bar @selection="selection"/>
+    <food-card-list @cooking_choice="cooking_selection"/>
     <bottom-bar />
   </div>
 </template>
@@ -16,6 +16,8 @@ import LogoTitle from "../components/logoTitle.vue";
 import SearchBar from "../components/searchBar.vue";
 import TrendFoodList from "../components/trendFoodList.vue";
 import CategoryBar from "../components/categoryBar.vue";
+import axios from "axios";
+import cookies from "vue-cookies";
 export default {
   name: "Home",
   components: {
@@ -25,6 +27,42 @@ export default {
     TrendFoodList,
     CategoryBar,
     FoodCardList,
+  },
+  data() {
+    return {
+      cooking_selection: "fry"
+    }
+  },
+  props: {
+    cooking_choice: {
+      type: String,
+    },
+  },
+  methods: {
+    getCollection() {
+      axios
+        .request({
+          url: "https://homedelicious.ml/api/collection",
+          method: "get",
+          params: {
+            user_id: cookies.get("user").user_id,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.$store.commit("saveCollectionList", response.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    selection(data) {
+      this.cooking_selection = data
+    }
+  },
+  mounted () {
+    if(cookies.get("user") != undefined){
+    this.getCollection();}
   },
 };
 </script>

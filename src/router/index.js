@@ -5,6 +5,7 @@ import Food from "../views/Food.vue";
 import uploadFood from "../views/uploadFood.vue";
 import LoginPage from "../views/LoginPage.vue";
 import UserPage from "../views/userPage.vue"
+import SearchPage from "../views/searchPage.vue"
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,10 @@ const routes = [{
     path: "/user/*",
     name: "user",
     component: UserPage
+}, {
+    path: "/search",
+    name: "search",
+    component: SearchPage
 }, ];
 
 const router = new VueRouter({
