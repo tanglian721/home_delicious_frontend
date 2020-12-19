@@ -6,6 +6,8 @@ import uploadFood from "../views/uploadFood.vue";
 import LoginPage from "../views/LoginPage.vue";
 import UserPage from "../views/userPage.vue"
 import SearchPage from "../views/searchPage.vue"
+import EditFood from "../views/editFood.vue"
+import EditUser from "../views/editUser.vue"
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,14 @@ const routes = [{
     path: "/search",
     name: "search",
     component: SearchPage
+}, {
+    path: "/edit",
+    name: "editFood",
+    component: EditFood
+}, {
+    path: "/editUser",
+    name: "editUser",
+    component: EditUser
 }, ];
 
 const router = new VueRouter({

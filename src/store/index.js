@@ -7,9 +7,10 @@ export default new Vuex.Store({
     state: {
         food: {},
         method: {},
+        // ingredient: {},
         ifuploadMethodData: false,
         ifuploadFoodData: false,
-        edit_food_id: "10",
+        edit_food_id: "16",
         collectionList: [],
         homeListChoice: "fry",
         food_grade: 0,
@@ -21,6 +22,9 @@ export default new Vuex.Store({
         updateMethod(state, data) {
             state.method = data
         },
+        // updateIngredient(state, data) {
+        //     state.ingredient = data
+        // },
         uploadMethodData(state) {
             state.ifuploadMethodData = true
         },
@@ -71,6 +75,20 @@ export default new Vuex.Store({
             let list = state.food.image.split("<###^^&&###>")
             list.pop()
             return list
+        },
+        desktop() {
+            if (screen.width >= 1280) {
+                return true
+            } else {
+                false
+            }
+        },
+        mobile() {
+            if (screen.width < 1280) {
+                return true
+            } else {
+                false
+            }
         }
     }
 })

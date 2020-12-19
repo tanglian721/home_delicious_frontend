@@ -1,11 +1,12 @@
 <template>
   <div class="home">
-    <logo-title />
+    <desktop-Bar v-if="this.$store.getters.desktop" />
+    <logo-title v-if="this.$store.getters.mobile" />
     <search-bar />
     <trend-food-list />
-    <category-bar @selection="selection"/>
-    <food-card-list @cooking_choice="cooking_selection"/>
-    <bottom-bar />
+    <category-bar @selection="selection" />
+    <food-card-list @cooking_choice="cooking_selection" />
+    <bottom-bar v-if="this.$store.getters.mobile" />
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import TrendFoodList from "../components/trendFoodList.vue";
 import CategoryBar from "../components/categoryBar.vue";
 import axios from "axios";
 import cookies from "vue-cookies";
+import DesktopBar from "../components/desktopBar.vue";
 export default {
   name: "Home",
   components: {
@@ -27,11 +29,13 @@ export default {
     TrendFoodList,
     CategoryBar,
     FoodCardList,
+    DesktopBar,
   },
   data() {
     return {
-      cooking_selection: "fry"
-    }
+      cooking_selection: "fry",
+      mobile: screen.width,
+    };
   },
   props: {
     cooking_choice: {
@@ -50,19 +54,20 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          this.$store.commit("saveCollectionList", response.data)
+          this.$store.commit("saveCollectionList", response.data);
         })
         .catch((error) => {
           console.log(error);
         });
     },
     selection(data) {
-      this.cooking_selection = data
-    }
+      this.cooking_selection = data;
+    },
   },
-  mounted () {
-    if(cookies.get("user") != undefined){
-    this.getCollection();}
+  mounted() {
+    if (cookies.get("user") != undefined) {
+      this.getCollection();
+    }
   },
 };
 </script>
@@ -80,7 +85,7 @@ export default {
     margin-left: 15%;
   }
   .search-bar {
-    z-index: 20;
+    z-index: 49;
     width: 100%;
     height: 8vh;
     background-color: $bgc;
@@ -91,7 +96,8 @@ export default {
     box-sizing: border-box;
     width: 100%;
     height: 40vh;
-    overflow: hidden;
+    position: relative;
+    // overflow: hidden;
   }
   .category-bar {
     z-index: 20;
@@ -113,6 +119,42 @@ export default {
     background-color: #fff;
     position: fixed;
     bottom: 0;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .home {
+    .desktop-bar {
+      box-sizing: border-box;
+      z-index: 50;
+      position: fixed;
+      height: 100vh;
+      width: 25vw;
+      background-color: $bgc;
+    }
+    .search-bar {
+      z-index: 20;
+      // width: 50vw;
+      margin-left: 28vw;
+      height: 6em;
+      top: 0;
+    }
+    .trend-food-list {
+      width: 50vw;
+      height: 25vw;
+      margin-left: 28vw;
+    }
+    .category-bar {
+      width: 55vw;
+      height: 6em;
+      margin-left: 25vw;
+      margin-top: 2vh;
+      top: 10vh;
+    }
+    .food-card-list {
+      width: 50vw;
+      min-height: 20vh;
+      margin-left: 27vw;
+    }
   }
 }
 </style>
