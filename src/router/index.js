@@ -8,6 +8,7 @@ import UserPage from "../views/userPage.vue"
 import SearchPage from "../views/searchPage.vue"
 import EditFood from "../views/editFood.vue"
 import EditUser from "../views/editUser.vue"
+import SettingPage from "../views/settingPage.vue"
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,10 @@ const routes = [{
     path: "/editUser",
     name: "editUser",
     component: EditUser
+}, {
+    path: "/setting",
+    name: "setting",
+    component: SettingPage
 }, ];
 
 const router = new VueRouter({

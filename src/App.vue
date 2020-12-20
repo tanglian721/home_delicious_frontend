@@ -5,9 +5,10 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Rubik&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Rubik&display=swap");
+@import "./assets/style/variable.scss";
 
-*{
+* {
   margin: 0;
   padding: 0;
 }

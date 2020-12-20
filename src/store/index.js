@@ -10,13 +10,15 @@ export default new Vuex.Store({
         // ingredient: {},
         ifuploadMethodData: false,
         ifuploadFoodData: false,
-        edit_food_id: "16",
+        edit_food_id: "",
         collectionList: [],
         homeListChoice: "fry",
         food_grade: 0,
         userpageToggle: "production",
         searchFoodList: [],
-        searchShow: false
+        searchShow: false,
+        language: cookies.get("Chinese"),
+        ifeditFood: true,
     },
     mutations: {
         updateMethod(state, data) {
@@ -51,6 +53,9 @@ export default new Vuex.Store({
         },
         updataFood(state, data) {
             state.food = data
+        },
+        updateIfeditFood(state, data) {
+            state.ifeditFood = data
         }
     },
     actions: {},
@@ -64,7 +69,6 @@ export default new Vuex.Store({
             return list
         },
         login() {
-            console.log(cookies.get('user'))
             if (cookies.get("user") != null) {
                 return true
             } else {
@@ -89,6 +93,12 @@ export default new Vuex.Store({
             } else {
                 false
             }
+        },
+        lan() {
+            return cookies.get("Chinese")
+        },
+        editFood(state) {
+            return state.ifeditFood
         }
     }
 })
