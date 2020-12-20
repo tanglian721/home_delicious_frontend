@@ -5,7 +5,7 @@
       <div class="ingredient-preview">
         <prematertial-div
           v-for="(material, index) in preview_ingredients"
-          :key="index"
+          :key="material[2] +index"
           :prematerial="material"
           :index="index"
           @updateIngredient="updateIngredient"
@@ -44,7 +44,7 @@
       <div class="method-preview">
         <pre-method-div
           v-for="(method, index) in pre_methods"
-          :key="index"
+          :key="method[2] + index"
           :preMethod="method"
           :index="index"
           @deleteStep="deleteStep"
@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     addIngredient() {
-      let ingredient = [this.material, this.amount];
+      let ingredient = [this.material, this.amount, this.preview_ingredients.length];
       this.preview_ingredients.push(ingredient);
       this.material = "";
       this.amount = "";

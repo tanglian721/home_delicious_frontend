@@ -190,7 +190,7 @@ export default {
       this.method_image = data;
     },
     addMethod() {
-      let method = [this.method_text, this.method_image];
+      let method = [this.method_text, this.method_image, this.pre_methods.length];
       this.pre_methods.push(method);
       this.method_text = "";
       this.method_image = "";
