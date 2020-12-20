@@ -8,9 +8,9 @@
       <div class="ingredient-preview">
         <prematertial-div
           v-for="(material, index) in preview_ingredients"
-          :key="index"
+          :key="material[2]+index"
           :prematerial="material"
-          :index="index"
+          :index="index"       
           @updateIngredient="updateIngredient"
           @deleteIngredient="deleteIngredient"
         />
@@ -53,7 +53,7 @@
       <div class="method-preview">
         <pre-method-div
           v-for="(method, index) in pre_methods"
-          :key="index"
+          :key="method[2]+index"
           :preMethod="method"
           :index="index"
           @deleteStep="deleteStep"
@@ -137,7 +137,8 @@ export default {
   },
   methods: {
     addIngredient() {
-      let ingredient = [this.material, this.amount];
+      let ingredient = [this.material, this.amount, this.preview_ingredients.length];
+      console.log(ingredient)
       this.preview_ingredients.push(ingredient);
       this.material = "";
       this.amount = "";
@@ -262,19 +263,27 @@ export default {
     },
     editMethod(newValue) {
       console.log(newValue);
-      let step = newValue.process.split("<###**^^###>");
-      step.pop();
-      for (let i = 0; i < step.length; i++) {
-        step[i] = step[i].split("<###**%%###>");
-      }
-      this.pre_methods = step;
       let ingredient = newValue.ingredient.split("<###**^^###>");
       ingredient.pop();
       for (let i = 0; i < ingredient.length; i++) {
         ingredient[i] = ingredient[i].split("<###**%%###>");
+        if (ingredient[i].length == 2){
+          ingredient[i].push(i)
+          console.log(ingredient[i])
+        }
       }
       this.preview_ingredients = ingredient;
       console.log(this.preview_ingredients);
+      let step = newValue.process.split("<###**^^###>");
+      step.pop();
+      for (let i = 0; i < step.length; i++) {
+        step[i] = step[i].split("<###**%%###>");
+        if (step[i].length == 2){
+          step[i].push(i)
+          console.log(step[i])
+        }
+      }
+      this.pre_methods = step;
     },
   },
 
@@ -472,26 +481,26 @@ export default {
           object-fit: cover;
         }
         .image-preview {
-        position: relative;
-        .delete {
-          position: absolute;
-          top: 0;
-          right: 0;
-          background-color: #fff;
-          width: 2em;
-          height: 2em;
-          img {
+          position: relative;
+          .delete {
             position: absolute;
-            top: 0.5em;
-            left: 0.5em;
-            width: 1em;
-            height: 1em;
-          }
-          &:hover {
-            cursor: pointer;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            width: 2em;
+            height: 2em;
+            img {
+              position: absolute;
+              top: 0.5em;
+              left: 0.5em;
+              width: 1em;
+              height: 1em;
+            }
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
-      }
       }
       .method-preview {
         width: 80%;

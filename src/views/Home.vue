@@ -140,7 +140,7 @@ export default {
     }
     .trend-food-list {
       width: 50vw;
-      height: 25vw;
+      height: 30vw;
       margin-left: 28vw;
     }
     .category-bar {

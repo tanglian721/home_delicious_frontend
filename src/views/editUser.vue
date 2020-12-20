@@ -80,6 +80,7 @@ export default {
     updateUsers() {
       let password = prompt("Please input your password");
       console.log(this.location);
+      console.log(this.icon)
       axios
         .request({
           url: "https://homedelicious.ml/api/users",

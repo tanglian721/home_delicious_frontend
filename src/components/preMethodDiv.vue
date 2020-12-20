@@ -101,13 +101,13 @@ export default {
   watch: {
     new_method_text(newValue) {
       console.log(newValue);
-      let data = [newValue, this.new_method_image];
+      let data = [newValue, this.new_method_image, this.index];
       console.log(data);
       this.$emit("updateMethod", data, this.index);
     },
     new_method_image(newValue) {
       console.log(data);
-      let data = [this.new_method_text, newValue];
+      let data = [this.new_method_text, newValue, this.index];
       this.$emit("updateMethod", data, this.index);
     },
   },

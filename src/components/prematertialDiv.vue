@@ -4,7 +4,8 @@
     <input class="material" type="text" name="" v-model="new_material" />
     <!-- <div v-else class="material">{{ material }}</div> -->
     <input class="amount" type="text" name="" v-model="new_amount" />
-    <img v-if="edit" src="../assets/confirm.png" alt="" @click="Confirm" />
+    <!-- <div v-else class="amount">{{ amount }}</div> -->
+    <!-- <img v-if="edit" src="../assets/confirm.png" alt="" @click="Confirm" /> -->
     <img src="../assets/delete.png" alt="" @click="Delete" />
   </div>
 </template>
@@ -32,12 +33,12 @@ export default {
     //   this.new_amount = this.amount;
     //   this.edit = true;
     // },
-    Confirm() {
-      let new_ingredient = [this.new_material, this.new_amount];
-      console.log(new_ingredient);
-      this.$emit("updateIngredient", new_ingredient, this.index);
-      this.edit = false;
-    },
+    // Confirm() {
+    //   let new_ingredient = [this.new_material, this.new_amount, this.index];
+    //   console.log(new_ingredient);
+    //   this.$emit("updateIngredient", new_ingredient, this.index);
+    //   this.edit = false;
+    // },
     Delete() {
       console.log(this.index);
       this.$emit("deleteIngredient", this.index);
@@ -46,13 +47,14 @@ export default {
   watch: {
     new_material(newValue) {
       console.log(newValue);
-      let data = [newValue, this.new_amount];
+      console.log(this.index)
+      let data = [newValue, this.new_amount, this.index];
       console.log(data);
       this.$emit("updateIngredient", data, this.index);
     },
     new_amount(newValue) {
-      console.log(data);
-      let data = [this.new_material, newValue];
+      console.log(this.index)
+      let data = [this.new_material, newValue, this.index];
       this.$emit("updateIngredient", data, this.index);
     },
   },

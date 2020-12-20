@@ -26,8 +26,6 @@ import cookies from "vue-cookies";
 export default {
   data() {
     return {
-      // icon: false,
-      avatar: cookies.get("user").icon,
     };
   },
   methods: {
@@ -38,10 +36,16 @@ export default {
       this.$router.push("/login");
     },
   },
+  computed: {
+    avatar() {
+      return cookies.get("user").icon
+    }
+  },
   mounted() {
     if (this.$router.history.current.path == "/") {
       this.icon = true;
     }
+
   },
 };
 </script>
