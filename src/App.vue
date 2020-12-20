@@ -12,5 +12,8 @@
   margin: 0;
   padding: 0;
 }
-
+::placeholder{
+  color: rgb(184, 175, 164);
+  opacity: 0.4;
+}
 </style>

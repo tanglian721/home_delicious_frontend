@@ -48,6 +48,11 @@ export default {
         });
     },
   },
+  mounted () {
+    if (this.$router.history.current.path == "/login" ||  cookies.get('user') == undefined) {
+      this.user = "user_icon"
+  }
+  }
 };
 </script>
 

@@ -79,6 +79,9 @@ export default {
       this.icon = data;
     },
     SignUp() {
+      if(this.icon == ""){
+        this.icon = "https://homedelicious.ml/img/uploadImgs/undefined_food_chef.png"
+      }
       axios
         .request({
           url: "https://homedelicious.ml/api/users",
@@ -141,6 +144,7 @@ export default {
       width: 25vw;
       height: 25vw;
       object-fit: cover;
+      border-radius: 50%;
     }
     .button {
       padding: 3vh;
@@ -171,7 +175,7 @@ export default {
   .signup-part {
     .form {
       width: 40%;
-      height: 80%;
+      height: 100%;
       .image-upload {
         width: 10vw;
       }

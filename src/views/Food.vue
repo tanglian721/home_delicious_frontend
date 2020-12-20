@@ -28,7 +28,7 @@
               >您还没有分享制作方法, <br />
               您想要现在分享吗？</span
             ><span v-else
-              >You have not share how to make this food， Do you want to share
+              >You haven't shared your recipe yet， Do you want to share
               now ?</span
             ></P
           >
@@ -41,7 +41,7 @@
           <P
             ><span v-if="this.$store.getters.lan"
               >作者还没有分享他的制作方法</span
-            ><span v-else>Author have not share how to make this food</span></P
+            ><span v-else>Author hasn't shared your recipe yet</span></P
           >
         </div>
       </div>
@@ -256,7 +256,8 @@ export default {
     .no-method {
       width: 80%;
       margin-left: 10%;
-      margin-top: 2em;
+      margin-top: 5em;
+      font-family: $fonts;
       > div {
         display: grid;
         justify-items: center;
@@ -338,6 +339,10 @@ export default {
       width: 55vw;
       margin-left: 30vw;
       filter: none;
+      .no-method {
+        P{
+          font-size: 1.2rem;
+        }}
     }
   }
 }

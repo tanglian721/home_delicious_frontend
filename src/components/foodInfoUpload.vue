@@ -53,67 +53,83 @@
       </div>
       <div class="other-info">
         <div class="cooking_way info">
-          <span
-            ><span v-if="this.$store.getters.lan">烹饪方式：</span
-            ><span v-else>Cooking method： </span></span
-          >
-          <select id="cook" name="cook" @change="Cook">
-            <option class="option" value="fry">
-              <span v-if="this.$store.getters.lan">炒</span
-              ><span v-else>fry</span>
-            </option>
-            <option class="option" value="deep fry">
-              <span v-if="this.$store.getters.lan">炸</span
-              ><span v-else>deep fry</span>
-            </option>
-            <option class="option" value="stew">
-              <span v-if="this.$store.getters.lan">烧</span
-              ><span v-else>stew</span>
-            </option>
-            <option class="option" value="steam">
-              <span v-if="this.$store.getters.lan">蒸</span
-              ><span v-else>steam</span>
-            </option>
-            <option class="option" value="bake">
-              <span v-if="this.$store.getters.lan">烤</span
-              ><span v-else>bake</span>
-            </option>
-            <option class="option" value="salad">
-              <span v-if="this.$store.getters.lan">拌</span
-              ><span v-else>salad</span>
-            </option>
-          </select>
+          <span>
+            <span v-if="this.$store.getters.lan">烹饪方式：</span>
+            <span v-else>Cooking method： </span>
+          </span>
+          <span>
+            <span class="required">
+              <span v-if="this.$store.getters.lan">必填</span>
+              <span v-else>Required</span>
+            </span>
+            <select id="cook" name="cook" @change="Cook">
+              <option class="option" value="fry">
+                <span v-if="this.$store.getters.lan">炒</span
+                ><span v-else>fry</span>
+              </option>
+              <option class="option" value="deep fry">
+                <span v-if="this.$store.getters.lan">炸</span
+                ><span v-else>deep fry</span>
+              </option>
+              <option class="option" value="stew">
+                <span v-if="this.$store.getters.lan">烧</span
+                ><span v-else>stew</span>
+              </option>
+              <option class="option" value="steam">
+                <span v-if="this.$store.getters.lan">蒸</span
+                ><span v-else>steam</span>
+              </option>
+              <option class="option" value="bake">
+                <span v-if="this.$store.getters.lan">烤</span
+                ><span v-else>bake</span>
+              </option>
+              <option class="option" value="salad">
+                <span v-if="this.$store.getters.lan">拌</span
+                ><span v-else>salad</span>
+              </option>
+            </select>
+          </span>
         </div>
         <div class="info">
           <span
             ><span v-if="this.$store.getters.lan">难度：</span
             ><span v-else>difficulty：</span>
           </span>
-          <select id="difficult" name="difficult" @change="Difficulty">
-            <option class="option" value="easy">
-              <span v-if="this.$store.getters.lan">简单</span
-              ><span v-else>easy</span>
-            </option>
-            <option class="option" value="medium">
-              <span v-if="this.$store.getters.lan">中等</span
-              ><span v-else>medium</span>
-            </option>
-            <option class="option" value="difficult">
-              <span v-if="this.$store.getters.lan">困难</span
-              ><span v-else>difficult</span>
-            </option>
-            <option class="option" value="super">
-              <span v-if="this.$store.getters.lan">大师</span
-              ><span v-else>super</span>
-            </option>
-          </select>
+          <span
+            ><span class="required"
+              ><span v-if="this.$store.getters.lan">必填</span
+              ><span v-else>Required</span></span
+            >
+            <select id="difficult" name="difficult" @change="Difficulty">
+              <option class="option" value="easy">
+                <span v-if="this.$store.getters.lan">简单</span
+                ><span v-else>easy</span>
+              </option>
+              <option class="option" value="medium">
+                <span v-if="this.$store.getters.lan">中等</span
+                ><span v-else>medium</span>
+              </option>
+              <option class="option" value="difficult">
+                <span v-if="this.$store.getters.lan">困难</span
+                ><span v-else>difficult</span>
+              </option>
+              <option class="option" value="super">
+                <span v-if="this.$store.getters.lan">大师</span
+                ><span v-else>super</span>
+              </option>
+            </select>
+          </span>
         </div>
         <div class="info">
           <span
             ><span v-if="this.$store.getters.lan">烹饪时间：</span
             ><span v-else>Cook Time:</span></span
           >
-          <span>
+          <span
+            ><span class="required"
+              ><span v-if="this.$store.getters.lan">必填</span
+              ><span v-else>Required</span></span
+            >
             <input type="text" v-model="time" placeholder="30" /><span
               v-if="this.$store.getters.lan"
               >分钟</span
@@ -158,7 +174,7 @@
         <span v-if="this.$store.getters.lan">继续编辑</span
         ><span v-else>Continue Edit</span>
       </button>
-      <button v-if="ifpreview" @click="uploadFood">
+      <button v-if="ifpreview" @click="CheckUpload">
         <span v-if="this.$store.getters.lan">确认分享</span
         ><span v-else>upload</span>
       </button>
@@ -193,7 +209,7 @@ export default {
       tag: "",
       cook_way: "",
       difficulty: "",
-      lang:"English",
+      lang: "English",
       pre_img_list: [],
     };
   },
@@ -226,9 +242,9 @@ export default {
     deleteImage(data) {
       this.pre_img_list.splice(data, 1);
     },
-    Language(){
+    Language() {
       this.lang = document.getElementById("language").value;
-      console.log(this.lang)
+      console.log(this.lang);
     },
     preview() {
       this.food_preview = {
@@ -257,8 +273,19 @@ export default {
     changePre(data) {
       this.pre_img = data;
     },
+    CheckUpload() {
+      if (this.food_preview.cooking_time == "") {
+        if (this.$store.getters.lan) {
+          alert("烹饪时间不能为空");
+        } else {
+          alert("Cook time is required");
+        }
+        this.ifpreview = false;
+      } else {
+        this.uploadFood();
+      }
+    },
     uploadFood() {
-      console.log(this.food_preview);
       axios
         .request({
           url: "https://homedelicious.ml/api/foods",
@@ -274,7 +301,7 @@ export default {
             cooking_time: this.food_preview.cooking_time,
             tag: this.food_preview.tag,
             images: this.food_preview.images,
-            lang: this.lang
+            lang: this.lang,
           },
         })
         .then((response) => {
@@ -351,6 +378,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
+
 .food-info-upload {
   .edit-div {
     display: grid;
@@ -398,6 +426,11 @@ export default {
     .other-info {
       display: grid;
       row-gap: 2vh;
+      .required{
+        font-size: 0.8rem;
+        color: #ff7c94;
+        margin-right: 1em;
+      }
       .info {
         background-color: $bgc;
         font-family: $fonts;

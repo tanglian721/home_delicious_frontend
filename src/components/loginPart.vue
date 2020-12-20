@@ -46,6 +46,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          alert("Username or Password is incorrect!")
         });
       }
   },
