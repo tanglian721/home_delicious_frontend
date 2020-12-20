@@ -5,8 +5,8 @@
     <p><span v-if="this.$store.getters.lan" >密码</span><span v-else >password</span></p>
     <input type="password" v-model="password" />
     <div class="button">
-      <button @click="login"><span v-if="this.$store.getters.lan" >登陆</span><span v-else >fry</span></button>
-      <button @click="back" ><span v-if="this.$store.getters.lan" >返回</span><span v-else >fry</span></button>
+      <button @click="login"><span v-if="this.$store.getters.lan" >登陆</span><span v-else >Login</span></button>
+      <button @click="back" ><span v-if="this.$store.getters.lan" >返回</span><span v-else >Back</span></button>
     </div>
     
   </div>
