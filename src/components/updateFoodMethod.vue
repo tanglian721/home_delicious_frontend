@@ -123,7 +123,7 @@ export default {
   },
   props: {
     prematerial: {
-      type: String,
+      type: Array,
     },
     preMethod: {
       type: Array,
@@ -270,9 +270,9 @@ export default {
       this.pre_methods = step;
       let ingredient = newValue.ingredient.split("<###**^^###>");
       ingredient.pop();
-      // for (let i = 0; i < ingredient.length; i++) {
-      //   ingredient[i] = ingredient[i].split("<###**%%###>");
-      // }
+      for (let i = 0; i < ingredient.length; i++) {
+        ingredient[i] = ingredient[i].split("<###**%%###>");
+      }
       this.preview_ingredients = ingredient;
       console.log(this.preview_ingredients);
     },
@@ -468,9 +468,30 @@ export default {
           // justify-self: start;
           width: 30vw;
           height: 30vh;
-          margin-left: 7vw;
+          // margin-left: 7vw;
           object-fit: cover;
         }
+        .image-preview {
+        position: relative;
+        .delete {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: #fff;
+          width: 2em;
+          height: 2em;
+          img {
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            width: 1em;
+            height: 1em;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
       }
       .method-preview {
         width: 80%;

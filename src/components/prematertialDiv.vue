@@ -2,6 +2,7 @@
   <div class="prematerial-div">
     <div class="round"></div>
     <input class="material" type="text" name="" v-model="new_material" />
+    <!-- <div v-else class="material">{{ material }}</div> -->
     <input class="amount" type="text" name="" v-model="new_amount" />
     <img v-if="edit" src="../assets/confirm.png" alt="" @click="Confirm" />
     <img src="../assets/delete.png" alt="" @click="Delete" />
@@ -19,13 +20,18 @@ export default {
   },
   props: {
     prematerial: {
-      type: String,
+      type: Array,
     },
     index: {
       type: Number,
     },
   },
   methods: {
+    // Edit() {
+    //   this.new_material = this.material;
+    //   this.new_amount = this.amount;
+    //   this.edit = true;
+    // },
     Confirm() {
       let new_ingredient = [this.new_material, this.new_amount];
       console.log(new_ingredient);
@@ -39,38 +45,29 @@ export default {
   },
   watch: {
     new_material(newValue) {
-      // let data = [newValue, this.new_amount];
-      let data = newValue+ "<###**%%###>" +this.new_amount;
+      console.log(newValue);
+      let data = [newValue, this.new_amount];
       console.log(data);
       this.$emit("updateIngredient", data, this.index);
     },
     new_amount(newValue) {
-      let data = this.new_material+ "<###**%%###>" +newValue;
       console.log(data);
+      let data = [this.new_material, newValue];
       this.$emit("updateIngredient", data, this.index);
     },
-    // prematerial(newValue){
-    // console.log(newValue)
-
-    // },
-    // },
-    // computed: {
-    //   material() {
-    //     return this.prematerial[0];
-    //   },
-    //   amount() {
-    //     return this.prematerial[1];
-    //   },
-    // },
   },
-    mounted() {
-      // this.new_material = this.material;
-      // this.new_amount = this.amount;
-      console.log(this.prematerial)
-      let step = this.prematerial.split("<###**%%###>");
-      this.new_material = step[0];
-      this.new_amount = step[1];
+  computed: {
+    material() {
+      return this.prematerial[0];
     },
+    amount() {
+      return this.prematerial[1];
+    },
+  },
+  mounted() {
+    this.new_material = this.material;
+    this.new_amount = this.amount;
+  },
 };
 </script>
 
