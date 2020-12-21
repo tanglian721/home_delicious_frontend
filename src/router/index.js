@@ -23,7 +23,8 @@ const routes = [{
 }, {
     path: "/upload",
     name: "upload",
-    component: uploadFood
+    component: uploadFood,
+
 }, {
     path: "/login",
     name: "login",
@@ -53,5 +54,6 @@ const routes = [{
 const router = new VueRouter({
     routes
 });
+
 
 export default router;

@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     getFoodList() {
-      console.log(this.cooking_choice)
+      // console.log(this.cooking_choice)
       axios
         .request({
           url: "https://homedelicious.ml/api/foods",

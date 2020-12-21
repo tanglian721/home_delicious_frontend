@@ -1,11 +1,14 @@
 <template>
   <div class="method-div">
     <div class="ingredient-area">
-      <h2><span v-if="this.$store.getters.lan" >原料：</span><span v-else >Ingredients:</span></h2>
+      <h2>
+        <span v-if="this.$store.getters.lan">原料：</span
+        ><span v-else>Ingredients:</span>
+      </h2>
       <div class="ingredient-preview">
         <prematertial-div
           v-for="(material, index) in preview_ingredients"
-          :key="material[2] +index"
+          :key="material[2] + index"
           :prematerial="material"
           :index="index"
           @updateIngredient="updateIngredient"
@@ -36,11 +39,17 @@
         </div>
       </div>
       <div class="button">
-        <button class="add" @click="addIngredient"><span v-if="this.$store.getters.lan" >添加原料</span><span v-else >Add ingredients</span></button>
+        <button class="add" @click="addIngredient">
+          <span v-if="this.$store.getters.lan">添加原料</span
+          ><span v-else>Add ingredients</span>
+        </button>
       </div>
     </div>
     <div class="method-area">
-      <h2><span v-if="this.$store.getters.lan" >步骤：</span><span v-else >Methods:</span></h2>
+      <h2>
+        <span v-if="this.$store.getters.lan">步骤：</span
+        ><span v-else>Methods:</span>
+      </h2>
       <div class="method-preview">
         <pre-method-div
           v-for="(method, index) in pre_methods"
@@ -52,7 +61,10 @@
         />
       </div>
       <div class="method-edit">
-        <h3><span v-if="this.$store.getters.lan" >第 {{ method_step }} 步</span><span v-else >STEP: {{ method_step }}</span></h3>
+        <h3>
+          <span v-if="this.$store.getters.lan">第 {{ method_step }} 步</span
+          ><span v-else>STEP: {{ method_step }}</span>
+        </h3>
         <textarea
           name="Text1"
           cols="40"
@@ -63,15 +75,22 @@
         ></textarea>
         <img v-if="method_image != ''" :src="method_image" alt="" />
         <p v-else class="img-title">
-          <span v-if="this.$store.getters.lan" >请上传您的图片</span><span v-else >Please upload your food photo</span>
+          <span v-if="this.$store.getters.lan">请上传您的图片</span
+          ><span v-else>Please upload your food photo</span>
           <image-upload @newImage="newImage" />
         </p>
         <div class="button">
-          <button class="add" @click="addMethod"><span v-if="this.$store.getters.lan" >添加步骤</span><span v-else >Add Methods</span></button>
+          <button class="add" @click="addMethod">
+            <span v-if="this.$store.getters.lan">添加步骤</span
+            ><span v-else>Add Methods</span>
+          </button>
         </div>
       </div>
     </div>
-    <button class="confirm" @click="uploadMethod"><span v-if="this.$store.getters.lan" >确认上传</span><span v-else >Upload</span></button>
+    <button class="confirm" @click="uploadMethod">
+      <span v-if="this.$store.getters.lan">确认上传</span
+      ><span v-else>Upload</span>
+    </button>
   </div>
 </template>
 
@@ -113,7 +132,11 @@ export default {
   },
   methods: {
     addIngredient() {
-      let ingredient = [this.material, this.amount, this.preview_ingredients.length];
+      let ingredient = [
+        this.material,
+        this.amount,
+        this.preview_ingredients.length,
+      ];
       this.preview_ingredients.push(ingredient);
       this.material = "";
       this.amount = "";
@@ -150,7 +173,7 @@ export default {
       console.log(this.pre_methods);
     },
     uploadMethod() {
-      this.ingredient="";
+      this.ingredient = "";
       for (let i = 0; i < this.preview_ingredients.length; i++) {
         this.ingredient =
           this.ingredient +
@@ -167,7 +190,7 @@ export default {
           this.amount +
           "<###**^^###>";
       }
-      this.methods="";
+      this.methods = "";
       console.log(this.ingredient);
       for (let i = 0; i < this.pre_methods.length; i++) {
         this.methods =
@@ -199,6 +222,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
+          this.$store.commit("updateEditStatue", true);
           this.$router.push("/food/" + this.$store.state.edit_food_id);
         })
         .catch((error) => {

@@ -51,12 +51,12 @@ export default {
   },
   methods: {
     setChinese() {
-      cookies.set("Chinese", true);
+      cookies.set("language", "Chinese");
       this.pop_up = false;
       location.reload();
     },
     setEnglish() {
-      cookies.remove("Chinese");
+      cookies.set("language", "English");
       this.pop_up = false;
       location.reload();
     },

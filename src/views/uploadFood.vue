@@ -40,6 +40,31 @@ export default {
       this.$store.commit("uploadFoodData");
     },
   },
+  computed: {
+    editStatue() {
+      return this.$store.state.editStatue;
+    },
+  },
+
+  mounted() {
+    this.$store.commit("updateEditStatue", false);
+  },
+
+  beforeRouteLeave(to, from, next) {
+    console.log(this.editStatue);
+    if (this.editStatue == false) {
+      const answer = window.confirm(
+        "You have not finish your uploading.  Do you make sure to leave this page?"
+      );
+      if (answer) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
+  },
 };
 </script>
 

@@ -28,8 +28,8 @@
               >您还没有分享制作方法, <br />
               您想要现在分享吗？</span
             ><span v-else
-              >You haven't shared your recipe yet， Do you want to share
-              now ?</span
+              >You haven't shared your recipe yet， Do you want to share now
+              ?</span
             ></P
           >
           <button @click="AddMethod">
@@ -165,6 +165,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.commit("updateMethod", "");
     this.getMethods();
     this.getFood();
   },
@@ -340,9 +341,10 @@ export default {
       margin-left: 30vw;
       filter: none;
       .no-method {
-        P{
+        P {
           font-size: 1.2rem;
-        }}
+        }
+      }
     }
   }
 }

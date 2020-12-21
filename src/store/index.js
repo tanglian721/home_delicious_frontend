@@ -19,14 +19,15 @@ export default new Vuex.Store({
         searchShow: false,
         language: cookies.get("Chinese"),
         ifeditFood: true,
+        editStatue: null,
     },
     mutations: {
         updateMethod(state, data) {
             state.method = data
         },
-        // updateIngredient(state, data) {
-        //     state.ingredient = data
-        // },
+        updateEditStatue(state, data) {
+            state.editStatue = data
+        },
         uploadMethodData(state) {
             state.ifuploadMethodData = true
         },
@@ -95,7 +96,11 @@ export default new Vuex.Store({
             }
         },
         lan() {
-            return cookies.get("Chinese")
+            if (cookies.get("language") == "Chinese") {
+                return true
+            } else {
+                return false
+            }
         },
         editFood(state) {
             return state.ifeditFood

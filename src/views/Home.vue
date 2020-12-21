@@ -1,5 +1,17 @@
 <template>
   <div class="home">
+    <div v-if="pop_up" class="pop-up">
+      <div class="language">
+        <div class="text">
+        <p>Please Chooese your language :</p>
+        <p>请选择您的语言 :</p>
+        </div>
+        <div class="select">
+          <button @click="setEnglish">English</button>
+          <button @click="setChinese">中文</button>
+        </div>
+      </div>
+    </div>
     <desktop-Bar v-if="this.$store.getters.desktop" />
     <logo-title v-if="this.$store.getters.mobile" />
     <search-bar />
@@ -35,6 +47,7 @@ export default {
     return {
       cooking_selection: "fry",
       mobile: screen.width,
+      pop_up: false,
     };
   },
   props: {
@@ -63,10 +76,23 @@ export default {
     selection(data) {
       this.cooking_selection = data;
     },
+    setChinese() {
+      cookies.set("language", "Chinese");
+      this.pop_up = false;
+      location.reload();
+    },
+    setEnglish() {
+      cookies.set("language", "English");
+      this.pop_up = false;
+      location.reload();
+    },
   },
   mounted() {
     if (cookies.get("user") != undefined) {
       this.getCollection();
+    }
+    if (cookies.get("language") == undefined) {
+      this.pop_up = true;
     }
   },
 };
@@ -119,6 +145,47 @@ export default {
     background-color: #fff;
     position: fixed;
     bottom: 0;
+  }
+  .pop-up {
+    z-index: 99;
+    position: absolute;
+    background-color: rgba(5, 5, 5, 0.63);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    .language {
+      width: 20vw;
+      height: auto;
+      padding: 1em;
+      background-color: #fff;
+      filter: $shadow;
+      border-radius: 10px;
+        display: grid;
+        justify-items: center;
+        row-gap: 1em;
+      .select{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+      button {
+        background-color: $fontColorlight;
+        color: #fff;
+        border-radius: 0.5rem;
+        padding: 5px;
+        text-transform: uppercase;
+        font-family: $fonts;
+        filter: $shadow;
+        width: 80%;
+        height: fit-content;
+        font-size: 0.8em;
+      }}
+    }
   }
 }
 @media only screen and (min-width: 1280px) {

@@ -1,14 +1,18 @@
 <template>
   <div class="edit-food">
-    <desktop-bar v-if="this.$store.getters.desktop"/>
-    <div class="topbar" v-if="this.$store.getters.mobile" >
+    <desktop-bar v-if="this.$store.getters.desktop" />
+    <div class="topbar" v-if="this.$store.getters.mobile">
       <img src="../assets/cancel.png" @click="back" alt="" />
       <!-- <p v-if="foodEdit" @click="uploadFood">publish food</p>
       <p v-else @click="uploadMethod">publish method</p>
       <div id="option"></div> -->
     </div>
-    <food-info-update v-if="foodEdit" :editFood="food_data" @finishFoodUpload="startMethod" />
-    <update-food-method v-else :editMethod="method_data"/>
+    <food-info-update
+      v-if="foodEdit"
+      :editFood="food_data"
+      @finishFoodUpload="startMethod"
+    />
+    <update-food-method v-else :editMethod="method_data" />
   </div>
 </template>
 
@@ -16,14 +20,15 @@
 import DesktopBar from "../components/desktopBar.vue";
 import FoodInfoUpdate from "../components/foodInfoUpdate.vue";
 import UpdateFoodMethod from "../components/updateFoodMethod.vue";
-import axios from "axios"
+import axios from "axios";
 
 export default {
   components: { FoodInfoUpdate, UpdateFoodMethod, DesktopBar },
   data() {
     return {
       food_data: null,
-      method_data: null
+      method_data: null,
+      finish: true,
     };
   },
   props: {
@@ -35,8 +40,8 @@ export default {
     },
   },
   methods: {
-    back(){
-      window.history.back()
+    back() {
+      window.history.back();
     },
     getFood() {
       axios
@@ -50,7 +55,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.food_data = response.data;
-          console.log(this.food_data)
+          console.log(this.food_data);
           this.$store.commit("updataFood", response.data);
         })
         .catch((error) => {
@@ -68,7 +73,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          this.method_data = response.data
+          this.method_data = response.data;
           this.$store.commit("updateMethod", response.data);
         })
         .catch((error) => {
@@ -77,7 +82,7 @@ export default {
     },
     startMethod() {
       this.$store.commit("updateIfeditFood", false);
-      this.getMethods()
+      this.getMethods();
     },
     uploadMethod() {
       this.$store.commit("uploadMethodData");
@@ -88,17 +93,36 @@ export default {
   },
   computed: {
     food_id() {
-      return this.$store.state.edit_food_id 
+      return this.$store.state.edit_food_id;
     },
     foodEdit() {
-      return this.$store.getters.editFood
+      return this.$store.getters.editFood;
+    },
+    editStatue() {
+      return this.$store.state.editStatue
     }
   },
-  mounted () {
-    console.log(this.food_id)
-    this.getFood()
-    this.getMethods()
-},
+  mounted() {
+    // console.log(this.food_id);
+    this.$store.commit("updateEditStatue",false)
+    this.getFood();
+    this.getMethods();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log(this.editStatue)
+    if (this.editStatue == false) {
+      const answer = window.confirm(
+        "You have not finish your uploading.  Do you make sure to leave this page?"
+      );
+      if (answer) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next()
+    }
+  },
 };
 </script>
 
@@ -134,8 +158,8 @@ export default {
 }
 @media only screen and (min-width: 1280px) {
   .edit-food {
-      background-color: $bgc;
-      margin-top: 0;
+    background-color: $bgc;
+    margin-top: 0;
     .desktop-bar {
       box-sizing: border-box;
       z-index: 50;
@@ -166,7 +190,7 @@ export default {
       //   border-radius: 1rem;
       // }
     }
-    .food-info-upload{
+    .food-info-upload {
       width: 55vw;
       margin-left: 25vw;
     }

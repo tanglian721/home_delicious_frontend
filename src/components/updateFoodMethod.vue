@@ -8,9 +8,9 @@
       <div class="ingredient-preview">
         <prematertial-div
           v-for="(material, index) in preview_ingredients"
-          :key="material[2]+index"
+          :key="material[2] + index"
           :prematerial="material"
-          :index="index"       
+          :index="index"
           @updateIngredient="updateIngredient"
           @deleteIngredient="deleteIngredient"
         />
@@ -53,7 +53,7 @@
       <div class="method-preview">
         <pre-method-div
           v-for="(method, index) in pre_methods"
-          :key="method[2]+index"
+          :key="method[2] + index"
           :preMethod="method"
           :index="index"
           @deleteStep="deleteStep"
@@ -92,10 +92,16 @@
         </div>
       </div>
     </div>
-    <button class="confirm" @click="uploadMethod">
-      <span v-if="this.$store.getters.lan">确认修改</span
-      ><span v-else>Update</span>
-    </button>
+    <div class="button">
+      <button class="confirm" @click="uploadMethod">
+        <span v-if="this.$store.getters.lan">确认修改</span
+        ><span v-else>Update</span>
+      </button>
+      <button class="backbtn" @click="back">
+        <span v-if="this.$store.getters.lan">退出</span
+        ><span v-else>back</span>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -137,8 +143,12 @@ export default {
   },
   methods: {
     addIngredient() {
-      let ingredient = [this.material, this.amount, this.preview_ingredients.length];
-      console.log(ingredient)
+      let ingredient = [
+        this.material,
+        this.amount,
+        this.preview_ingredients.length,
+      ];
+      console.log(ingredient);
       this.preview_ingredients.push(ingredient);
       this.material = "";
       this.amount = "";
@@ -149,6 +159,10 @@ export default {
       console.log(data2);
       this.preview_ingredients.splice(data2, 1, data1);
       console.log(this.preview_ingredients);
+    },
+    back(){
+      console.log("aa")
+      window.history.back()
     },
     deleteimage() {
       let filename = this.method_image.replace(
@@ -190,7 +204,11 @@ export default {
       this.method_image = data;
     },
     addMethod() {
-      let method = [this.method_text, this.method_image, this.pre_methods.length];
+      let method = [
+        this.method_text,
+        this.method_image,
+        this.pre_methods.length,
+      ];
       this.pre_methods.push(method);
       this.method_text = "";
       this.method_image = "";
@@ -232,28 +250,37 @@ export default {
           this.method_image +
           "<###**^^###>";
       }
-      console.log(this.ingredient);
-      console.log(this.methods);
-      console.log(this.$store.state.edit_food_id);
-      axios
-        .request({
-          url: "https://homedelicious.ml/api/methods",
-          method: "patch",
-          data: {
-            token: cookies.get("token"),
-            food_id: this.$store.state.edit_food_id,
-            ingredient: this.ingredient,
-            process: this.methods,
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          this.$router.push("/food/" + this.$store.state.edit_food_id);
-          this.$store.commit("updateIfeditFood", true);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      console.log(this.ingredient)
+      console.log(this.methods)
+      if (this.methods == "" && this.ingredient == "") {
+        if (this.$store.getters.lan) {
+          alert("你没有输入任何原料或步骤");
+        } else {
+          alert("You haven't enter any ingredient and methods..");
+        }
+      } else {
+        axios
+          .request({
+            url: "https://homedelicious.ml/api/methods",
+            method: "patch",
+            data: {
+              token: cookies.get("token"),
+              food_id: this.$store.state.edit_food_id,
+              ingredient: this.ingredient,
+              process: this.methods,
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            this.$store.commit("updateEditStatue", true);
+            console.log(this.$store.state.editStatue)
+            this.$router.push("/food/" + this.$store.state.edit_food_id);
+            this.$store.commit("updateIfeditFood", true);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
   },
   watch: {
@@ -269,9 +296,9 @@ export default {
       ingredient.pop();
       for (let i = 0; i < ingredient.length; i++) {
         ingredient[i] = ingredient[i].split("<###**%%###>");
-        if (ingredient[i].length == 2){
-          ingredient[i].push(i)
-          console.log(ingredient[i])
+        if (ingredient[i].length == 2) {
+          ingredient[i].push(i);
+          console.log(ingredient[i]);
         }
       }
       this.preview_ingredients = ingredient;
@@ -280,9 +307,9 @@ export default {
       step.pop();
       for (let i = 0; i < step.length; i++) {
         step[i] = step[i].split("<###**%%###>");
-        if (step[i].length == 2){
-          step[i].push(i)
-          console.log(step[i])
+        if (step[i].length == 2) {
+          step[i].push(i);
+          console.log(step[i]);
         }
       }
       this.pre_methods = step;
@@ -519,6 +546,7 @@ export default {
       text-transform: uppercase;
       font-family: $fonts;
       border: 1px solid $fontColordark;
+      margin-right: 1em;
     }
   }
 }
