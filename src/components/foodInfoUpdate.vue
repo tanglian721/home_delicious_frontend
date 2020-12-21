@@ -156,6 +156,11 @@ export default {
     },
     deleteImage(data) {
       this.pre_img_list.splice(data, 1);
+      console.log(this.pre_img_list)
+      for (let i = 0; i < this.pre_img_list.length; i ++){
+        this.images = "";
+        this.images =this.images + this.pre_img_list + "<###^^&&###>";
+      }
     },
     method(){
       console.log("11")
@@ -278,7 +283,9 @@ export default {
       this.cook_way = document.getElementById("cook").value;
       this.difficulty = document.getElementById("difficult").value;
     }
+    console.log(this.pre_img_list)
   },
+  
 };
 </script>
 

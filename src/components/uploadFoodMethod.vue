@@ -150,6 +150,7 @@ export default {
       console.log(this.pre_methods);
     },
     uploadMethod() {
+      this.ingredient="";
       for (let i = 0; i < this.preview_ingredients.length; i++) {
         this.ingredient =
           this.ingredient +
@@ -166,6 +167,7 @@ export default {
           this.amount +
           "<###**^^###>";
       }
+      this.methods="";
       console.log(this.ingredient);
       for (let i = 0; i < this.pre_methods.length; i++) {
         this.methods =

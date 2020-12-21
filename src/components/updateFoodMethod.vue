@@ -198,6 +198,7 @@ export default {
     },
     uploadMethod() {
       console.log(this.editMethod);
+      this.ingredient = "";
       for (let i = 0; i < this.preview_ingredients.length; i++) {
         this.ingredient =
           this.ingredient +
@@ -214,6 +215,7 @@ export default {
           this.amount +
           "<###**^^###>";
       }
+      this.methods = "";
       for (let i = 0; i < this.pre_methods.length; i++) {
         this.methods =
           this.methods +

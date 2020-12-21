@@ -8,36 +8,40 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 export default {
   props: {
     image_url: {
       type: String,
     },
     index: {
-      type:Number
-    }
+      type: Number,
+    },
   },
   methods: {
     deleteimage() {
-    let filename = this.image_url.replace("https://homedelicious.ml/img/uploadImgs/", "")
-    console.log(filename)
-    axios
+      let filename = this.image_url.replace(
+        "https://homedelicious.ml/img/uploadImgs/",
+        ""
+      );
+      console.log(filename);
+      axios
         .request({
           url: "https://homedelicious.ml/api/upload",
           method: "delete",
           data: {
-             image : filename
+            image: filename,
           },
         })
         .then((response) => {
-          console.log(response)
-          this.$emit("delete", this.index)
+          console.log(response);
+          // this.$emit("delete", this.index);
         })
         .catch((error) => {
           console.log(error);
         });
-    }
+      this.$emit("delete", this.index);
+    },
   },
 };
 </script>
@@ -64,7 +68,7 @@ export default {
       width: 1em;
       height: 1em;
     }
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
