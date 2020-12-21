@@ -158,7 +158,7 @@ export default {
     justify-items: center;
     align-items: center;
     .language {
-      width: 20vw;
+      width: 80%;
       height: auto;
       padding: 1em;
       background-color: #fff;
@@ -222,6 +222,47 @@ export default {
       min-height: 20vh;
       margin-left: 27vw;
     }
+      .pop-up {
+    z-index: 99;
+    position: absolute;
+    background-color: rgba(5, 5, 5, 0.63);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    .language {
+      width: 20vw;
+      height: auto;
+      padding: 1em;
+      background-color: #fff;
+      filter: $shadow;
+      border-radius: 10px;
+        display: grid;
+        justify-items: center;
+        row-gap: 1em;
+      .select{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+      button {
+        background-color: $fontColorlight;
+        color: #fff;
+        border-radius: 0.5rem;
+        padding: 5px;
+        text-transform: uppercase;
+        font-family: $fonts;
+        filter: $shadow;
+        width: 80%;
+        height: fit-content;
+        font-size: 0.8em;
+      }}
+    }
+  }
   }
 }
 </style>
