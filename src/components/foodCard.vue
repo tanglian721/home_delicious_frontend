@@ -133,6 +133,9 @@ export default {
   .image {
     left: 1vw;
     bottom: 1vw;
+    &:hover{
+        cursor: pointer;
+      }
     img {
       width: 8vw;
       height: 6vw;
@@ -155,6 +158,11 @@ export default {
     height: 8vw;
     padding: 0.5vw 0;
     padding-left: 10vw;
+    img{
+      &:hover{
+        cursor: pointer;
+      }
+    }
     .icon {
       width: 90%;
       .grade-Display {
@@ -179,10 +187,16 @@ export default {
       }
       .users {
         z-index: 50;
+        &:hover{
+        cursor: pointer;
+      }
       }
       .name {
         color: black;
         font-size: 0.8rem;
+        &:hover{
+        cursor: pointer;
+      }
       }
     }
   }

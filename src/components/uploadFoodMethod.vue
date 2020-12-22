@@ -77,7 +77,7 @@
         <p v-else class="img-title">
           <span v-if="this.$store.getters.lan">请上传您的图片</span
           ><span v-else>Please upload your food photo</span>
-          <image-upload @newImage="newImage" />
+          <image-upload-method @newImage="newImage" />
         </p>
         <div class="button">
           <button class="add" @click="addMethod">
@@ -95,14 +95,14 @@
 </template>
 
 <script>
-import ImageUpload from "./imageUpload.vue";
 import PrematertialDiv from "./prematertialDiv.vue";
 import PreMethodDiv from "./preMethodDiv.vue";
 import axios from "axios";
 import cookies from "vue-cookies";
+import ImageUploadMethod from './imageUploadMethod.vue';
 
 export default {
-  components: { PrematertialDiv, ImageUpload, PreMethodDiv },
+  components: { PrematertialDiv, PreMethodDiv, ImageUploadMethod },
   data() {
     return {
       ifpreview: false,

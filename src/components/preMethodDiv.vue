@@ -33,17 +33,17 @@
     <img v-if="new_method_image != ''" :src="new_method_image" alt="" />
     <p v-else class="img-title">
       <span v-if="this.$store.getters.lan" >请上传您的图片</span><span v-else >Please upload your food photo</span>
-      <image-upload @newImage="newImage" />
+      <image-upload-method @newImage="newImage" />
     </p>
   </div>
 </template>
 
 <script>
-import imageUpload from "./imageUpload.vue";
 import axios from "axios"
+import ImageUploadMethod from './imageUploadMethod.vue';
 
 export default {
-  components: { imageUpload },
+  components: { ImageUploadMethod },
   data() {
     return {
       new_method_text: "",

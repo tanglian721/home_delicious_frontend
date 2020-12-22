@@ -31,7 +31,7 @@
         <p class="img-title">
           <span v-if="this.$store.getters.lan">请上传您的图片</span
           ><span v-else>Please upload your food photo</span>
-          <image-upload @newImage="newImage" />
+          <image-upload-food @newImage="newImage" />
         </p>
       </div>
       <div class="title-description">
@@ -189,12 +189,12 @@
 <script>
 import FoodDescription from "./foodDescription.vue";
 import ImagePreview from "./imagePreview.vue";
-import imageUpload from "./imageUpload.vue";
 import axios from "axios";
 import cookies from "vue-cookies";
+import ImageUploadFood from './imageUploadFood.vue';
 
 export default {
-  components: { imageUpload, ImagePreview, FoodDescription },
+  components: { ImagePreview, FoodDescription, ImageUploadFood },
   data() {
     return {
       ifpreview: false,

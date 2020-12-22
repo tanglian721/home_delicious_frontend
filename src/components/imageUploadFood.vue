@@ -31,7 +31,7 @@ export default {
     onchange(e) {
       this.loading = true;
       const file = e.target.files[0];
-      this.name = this.user.user_id + "_user_" + file.name;
+      this.name = this.user.user_id + "_food_" + file.name;
       let formData = new FormData();
       formData.set("file", file, this.name);
       axios

@@ -22,7 +22,7 @@
       <span>{{ food.food_category }}</span>
       <span>{{ food.tag }}</span>
     </div>
-    <div class="by">
+    <div @click="toUserpage" class="by">
       <span>by </span>
       <span>{{ food.username }}</span>
       <img :src="food.icon" alt="" />
@@ -89,6 +89,9 @@ export default {
     editFood() {
       this.$store.commit("saveEditFoodId",this.food.food_id)
       this.$router.push("/edit")
+    },
+    toUserpage() {
+      this.$router.push("/user/" + this.food.user_id);
     },
     deleteFood() {
       this.option = false
@@ -229,8 +232,8 @@ export default {
     align-items: center;
     justify-items: center;
     > div {
-      width: 70%;
-      height: 70%;
+      width: 80%;
+      height: 80%;
       background-color: $redBgc;
       display: grid;
       justify-items: center;
@@ -307,6 +310,9 @@ export default {
         position: relative;
         top: 0.3em;
         margin-left: 1em;
+      }
+      &:hover{
+        cursor: pointer;
       }
     }
     .description {

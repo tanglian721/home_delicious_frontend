@@ -56,6 +56,9 @@ export default {
     position: absolute;
     // left: 5vw;
     top: 0;
+    &:hover{
+        cursor: pointer;
+      }
     img {
       width: 10em;
       height: 8em;
@@ -125,10 +128,16 @@ export default {
       }
       .users {
         z-index: 50;
+        &:hover{
+        cursor: pointer;
+      }
       }
       .name {
         color: black;
         font-size: 1.2rem;
+        &:hover{
+        cursor: pointer;
+      }
       }
     }
   }

@@ -362,6 +362,7 @@ export default {
       display: grid;
       row-gap: 5vh;
       overflow-y: scroll;
+      align-content: start;
       .card {
         margin-left: 10%;
       }

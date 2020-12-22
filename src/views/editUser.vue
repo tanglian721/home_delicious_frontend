@@ -88,7 +88,7 @@ export default {
           data: {
             token: cookies.get("token"),
             username: this.username,
-            password: password,
+            old_password: password,
             email: this.email,
             birthday: this.birthday,
             location: this.location,
@@ -251,8 +251,6 @@ export default {
       background-color: #fff;
       position: fixed;
       bottom: 0;
-    }
-    P {
     }
   }
 }
