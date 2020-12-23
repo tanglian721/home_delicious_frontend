@@ -166,8 +166,9 @@ export default {
     .icon {
       width: 90%;
       .grade-Display {
+        margin-top: 0.5em;
         width: 3em;
-        height: 1em;
+        height: 0.9em;
       }
       .collection-display {
         width: 1vw;
