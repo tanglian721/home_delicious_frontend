@@ -148,7 +148,7 @@ export default {
   }
   .pop-up {
     z-index: 99;
-    position: absolute;
+    position: fixed;
     background-color: rgba(5, 5, 5, 0.63);
     top: 0;
     left: 0;
@@ -224,7 +224,7 @@ export default {
     }
       .pop-up {
     z-index: 99;
-    position: absolute;
+    // position: absolute;
     background-color: rgba(5, 5, 5, 0.63);
     top: 0;
     left: 0;
