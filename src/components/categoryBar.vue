@@ -171,7 +171,6 @@ export default {
         padding: 0 2vw;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         overflow-x: hidden;
-
         .icon {
           height: 4em;
           width: 4em;
@@ -182,8 +181,8 @@ export default {
           justify-items: center;
           align-items: center;
           filter: $shadow;
-          img {
-            height: 60%;
+          >img {
+            height: 2.5em;
           }
         }
         .fry {
