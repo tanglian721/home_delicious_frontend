@@ -46,7 +46,7 @@ export default {
     margin-left: 2vw;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .material-div {
     width: 100%;
 

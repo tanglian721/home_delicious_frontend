@@ -1,13 +1,55 @@
 <template>
-  <div class="desktop-bar">
-    <logo-title />
-    <div class="button">
-      <button :style="homeclass" @click="home"><span v-if="this.$store.getters.lan" >主页</span><span v-else >home</span></button>
-      <button :style="user" @click="toUserpage"><span v-if="this.$store.getters.lan" >用户</span><span v-else >user</span></button>
-      <button :style="collection" @click="toCollection"><span v-if="this.$store.getters.lan" >收藏</span><span v-else >favorate</span></button>
-      <button :style="addnew" @click="addNew"><span v-if="this.$store.getters.lan" >分享食物</span><span v-else >Share Food</span></button>
-      <button :style="search" @click="toSearchPage"><span v-if="this.$store.getters.lan" >搜索</span><span v-else >search</span></button>
-      <button @click="logout" class="logout"><span v-if="this.$store.getters.lan" >注销</span><span v-else >logout</span></button>
+  <div class="desktop-bar pt-5">
+    <div class="row">
+      <logo-title class="logo-title pt-5" />
+      <div class="button ">
+        <div class="row">
+        <button
+          class="deskButton btn mb-3 offset-3 col-6"
+          :style="homeclass"
+          @click="home"
+        >
+          <span v-if="this.$store.getters.lan">主页</span
+          ><span v-else>home</span>
+        </button>
+        <button
+          class="deskButton btn mb-3 offset-3 col-6"
+          :style="user"
+          @click="toUserpage"
+        >
+          <span v-if="this.$store.getters.lan">用户</span
+          ><span v-else>user</span>
+        </button>
+        <button
+          class="deskButton btn mb-3 offset-3 col-6"
+          :style="collection"
+          @click="toCollection"
+        >
+          <span v-if="this.$store.getters.lan">收藏</span
+          ><span v-else>favorate</span>
+        </button>
+        <button
+          class="deskButton btn mb-3 offset-3 col-6"
+          :style="addnew"
+          @click="addNew"
+        >
+          <span v-if="this.$store.getters.lan">分享食物</span
+          ><span v-else>Share Food</span>
+        </button>
+        <button
+          class="deskButton btn mb-3 offset-3 col-6"
+          :style="search"
+          @click="toSearchPage"
+        >
+          <span v-if="this.$store.getters.lan">搜索</span
+          ><span v-else>search</span>
+        </button>
+        <button class="logout position-absolute btn fixed-bottom mb-5" @click="logout" >
+          <span v-if="this.$store.getters.lan">注销</span
+          ><span v-else>logout</span>
+        </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -108,14 +150,10 @@ export default {
       this.toggle == "collection"
     ) {
       this.collection = this.select;
-    } else if (
-      this.$router.history.current.path.includes("/search")
-    ) {
+    } else if (this.$router.history.current.path.includes("/search")) {
       this.search = this.select;
-    }else if (
-      this.$router.history.current.path.includes("/upload")
-    ) {
-      this.addnew= this.select;
+    } else if (this.$router.history.current.path.includes("/upload")) {
+      this.addnew = this.select;
     }
   },
 };
@@ -123,32 +161,66 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
-
+// .logo-title {
+//   height: 20vh;
+// }
 .desktop-bar {
-  font-family: $fonts;
-  color: $fontColordark;
-  .button {
-    width: 15vw;
-    margin-left: 10vw;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    margin-top: 5vh;
-    row-gap: 2vh;
-    button {
-      text-transform: uppercase;
-      padding: 0.2em 0.5em;
-      border-radius: 1em;
-      &:hover {
-        background-color: $barBgc;
-        color: #fff;
-        filter: $shadow;
-      }
-    }
-    .logout {
-      position: relative;
-      top: 20vh;
-    }
+  height: 100vh;
+  width: 20%;
+}
+.deskButton {
+  height: 2rem;
+  text-transform: uppercase;
+  padding: 0.2em 0.5em;
+  border-radius: 1em;
+  transition: all 0.2s linear;
+  &:hover {
+    transition: all 0.2s linear;
+    background-color: $barBgc;
+    color: #fff;
+    filter: $shadow;
   }
 }
+.logout {
+  width: 40%;
+  margin-left: 30%;
+  height: 2rem;
+  text-transform: uppercase;
+  padding: 0.2em 0.5em;
+  border-radius: 1em;
+  transition: all 0.2s linear;
+  &:hover {
+    transition: all 0.2s linear;
+    background-color: $barBgc;
+    color: #fff;
+    filter: $shadow;
+  }
+}
+// .desktop-bar {
+//   font-family: $fonts;
+//   color: $fontColordark;
+//   .button {
+//     width: 15vw;
+//     margin-left: 10vw;
+//     display: grid;
+//     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+//     justify-content: center;
+//     margin-top: 5vh;
+//     row-gap: 2vh;
+//     button {
+//       text-transform: uppercase;
+//       padding: 0.2em 0.5em;
+//       border-radius: 1em;
+//       &:hover {
+//         background-color: $barBgc;
+//         color: #fff;
+//         filter: $shadow;
+//       }
+//     }
+//     .logout {
+//       position: relative;
+//       top: 20vh;
+//     }
+//   }
+// }
 </style>

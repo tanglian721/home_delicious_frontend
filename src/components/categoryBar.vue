@@ -1,5 +1,5 @@
 <template>
-  <div class="category-bar">
+  <div class="category-bar py-3">
     <div class="outside">
       <div class="category-div">
         <div
@@ -8,7 +8,7 @@
           :style="{ backgroundColor: bgcFry }"
           @click="selectWay('fry')"
         >
-          <img src="../assets/frying-pan.png" alt="" />
+          <img class="w-50" src="../assets/frying-pan.png" alt="" />
         </div>
         <div
           class="icon"
@@ -16,7 +16,7 @@
           :style="{ backgroundColor: bgcStew }"
           @click="selectWay('stew')"
         >
-          <img src="../assets/pot.png" alt="" />
+          <img class="w-50" src="../assets/pot.png" alt="" />
         </div>
         <div
           class="icon"
@@ -24,7 +24,7 @@
           :style="{ backgroundColor: bgcBake }"
           @click="selectWay('bake')"
         >
-          <img src="../assets/oven.png" alt="" />
+          <img class="w-50" src="../assets/oven.png" alt="" />
         </div>
         <div
           class="icon"
@@ -32,7 +32,7 @@
           :style="{ backgroundColor: bgcDeepFry }"
           @click="selectWay('deep fry')"
         >
-          <img src="../assets/fryer.png" alt="" />
+          <img class="w-50" src="../assets/fryer.png" alt="" />
         </div>
         <div
           class="icon"
@@ -40,7 +40,7 @@
           :style="{ backgroundColor: bgcSalad }"
           @click="selectWay('salad')"
         >
-          <img src="../assets/salad.png" alt="" />
+          <img class="w-50" src="../assets/salad.png" alt="" />
         </div>
         <div
           class="icon"
@@ -48,7 +48,7 @@
           :style="{ backgroundColor: bgcSteam }"
           @click="selectWay('steam')"
         >
-          <img src="../assets/steamer.png" alt="" />
+          <img class="w-50" src="../assets/steamer.png" alt="" />
         </div>
       </div>
     </div>
@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     selectWay(data) {
-      console.log(data);
       if (data == "fry") {
         this.bgcFry = "#FFCAD4";
         this.bgcStew = "#F3F6F4";
@@ -128,6 +127,7 @@ export default {
 @import "../assets/style/variable.scss";
 
 .category-bar {
+  height: 12vh;
   .outside {
     width: 90%;
     margin-left: 5%;
@@ -149,9 +149,9 @@ export default {
         justify-items: center;
         align-items: center;
         filter: $shadow;
-        img {
-          height: 60%;
-        }
+        // >img {
+        //   height: 60%;
+        // }
       }
       .fry {
         background-color: $redBgc;
@@ -159,7 +159,7 @@ export default {
     }
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .category-bar {
     .outside {
       width: 100%;
@@ -169,6 +169,7 @@ export default {
         height: 11vh;
         display: grid;
         padding: 0 2vw;
+        justify-items: center;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         overflow-x: hidden;
         .icon {

@@ -263,7 +263,7 @@ button {
     bottom: 0;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .setting-page {
     .desktop-bar {
       box-sizing: border-box;

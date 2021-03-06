@@ -1,7 +1,17 @@
 <template>
-  <div class="search-bar">
-    <input class="bar" type="text" v-model="content" @keypress.enter="enter" />
-    <img @click="searchByTag" src="../assets/search-w.png" alt="" />
+  <div class="search-bar container-fluid position-relative">
+    <input
+      class="bar bg-barBgc w-80 rounded-pill ps-5"
+      type="text"
+      v-model="content"
+      @keypress.enter="enter"
+    />
+    <img
+      class="search-icon position-absolute start-0"
+      @click="searchByTag"
+      src="../assets/search-w.png"
+      alt=""
+    />
   </div>
 </template>
 
@@ -63,45 +73,33 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
-
 .search-bar {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  position: relative;
-    color: fontsColordark;
-  .bar {
-    box-sizing: border-box;
-    background-color: $barBgc;
-    height: 10vw;
-    width: 70%;
-    border-radius: 2vh;
-    border: none;
-    filter: $shadow;
-    padding-left: 15vw;
-    font-size: 1.1rem;
-  }
-  img {
-    position: absolute;
-    height: 1em;
-    left: 18%;
-  }
+  z-index: 50;
+  height: 6rem;
+  top: -5px;
 }
-@media only screen and (min-width: 1280px) {
-  .search-bar {
-    display: grid;
-    justify-items: start;
-    .bar {
-      height: 2em;
-      width: 40vw;
-      border-radius: 2vh;
-      padding-left: 4vw;
-    }
-    img {
-      position: absolute;
-      height: 1em;
-      left: 2vw;
-    }
+.bar {
+  height: 2.5rem;
+  margin-top: 2rem;
+  margin-left: 10%;
+  border:none;
+}
+.search-icon {
+  height: 1.5rem;
+  margin-top: 2.5rem;
+  margin-left: 4rem;
+}
+@media only screen and (min-width: 992px) {
+  .search-icon {
+    height: 1.5rem;
+    margin-top: 2.5rem;
+    margin-left: 8rem;
+  }
+  .bar {
+    height: 2.5rem;
+    margin-top: 2rem;
+    margin-left: 10%;
+    padding-left: 6% !important;
   }
 }
 </style>

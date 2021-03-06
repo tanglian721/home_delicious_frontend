@@ -59,7 +59,7 @@ export default {
     margin-top: 2vh;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .process-div {
     display: grid;
     justify-items: center;

@@ -75,7 +75,7 @@ export default {
     }
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   h2 {
     margin-top: 2vh;
   }

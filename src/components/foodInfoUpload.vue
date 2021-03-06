@@ -509,7 +509,7 @@ export default {
     }
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .food-info-upload {
     // border: 1px solid black;
     width: 55vw;

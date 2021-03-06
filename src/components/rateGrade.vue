@@ -116,7 +116,7 @@ export default {
     width: 2em;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
 .rate-grade {
   width: 20%;
   margin-left: 40%;

@@ -1,8 +1,8 @@
 <template>
   <div class="grade-Display">
-    <img src="../assets/5-STAR-w.png" alt="" />
-    <div class="grade" :style="{ width: grade * 19 + '%' }"></div>
-    <div class="bg"></div>
+    <img class="bg position-absolute w-100 top-0 ratio ratio-5x1" src="../assets/5-STAR-w.png" alt="" />
+    <div class="grade w-100"  :style="{ width: grade * 19 + '%' }"></div>
+    <!-- <div class="bg position-absolute w-100 top-0"></div> -->
   </div>
 </template>
 
@@ -21,29 +21,34 @@ export default {
 
 .grade-Display {
   position: relative;
+  box-sizing: border-box;
   img {
     position: relative;
     z-index: 50;
     width: 100%;
+    transform: scale(1.03);
   }
   .grade {
     position: absolute;
-    height: 70%;
-    z-index: 49;
+    padding-top: 28%;
+    margin:px;
+    
+    // height: 70%;
+    // z-index: 49;
     top: 0;
-    margin-top: 5%;
-    margin-left: 2.5%;
+    // margin-top: 5%;
+    // margin-left: 2.5%;
     background-color: gold;
   }
-  .bg {
-    position: absolute;
-    z-index: 48;
-    top: 0;
-    height: 80%;
-    margin-top: 5%;
-    margin-left: 2.5%;
-    width: 95%;
-    background-color: $barBgc;
-  }
+  // .bg {
+  //   position: absolute;
+  //   z-index: 48;
+  //   top: 0;
+  //   height: 80%;
+  //   margin-top: 5%;
+  //   margin-left: 2.5%;
+  //   width: 95%;
+  //   background-color: $barBgc;
+  // }
 }
 </style>

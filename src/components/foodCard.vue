@@ -1,21 +1,17 @@
 <template>
-  <div class="food-card">
-    <div class="image" @click="toFoodPage" >
-      <img :src="food.image.split('<###^^&&###>')[0]" alt="" />
-      <img class="logo" src="../assets/logo.png" alt="">
+  <div class="food-card bg-white row card-frame p-0 my-3">
+    <div class="image col-6 p-0" @click="toFoodPage" >
+      <img class="card-img" :src="food.image.split('<###^^&&###>')[0]" alt="" />
+      <img class="card-logo position-relative" src="../assets/logo-card.png" alt="">
     </div>
-    <div class="card">
-      <div class="icon">
-        <grade-display :grade="food.grade"/>
-        <collection-display :food="food"/>
-      </div>
-      <div class="text">
-        <p @click="toFoodPage" >{{ food.food_category }}</p>
-        <p class="name">{{ food.food_name }}</p>
-        <p @click="toUserpage" class="users" >
-          by <span>{{ food.username }}</span> <img :src="food.icon" alt="" />
-        </p>
-      </div>
+            
+    <div class="text-card h-100 col-6 py-3 row">
+        <grade-display class="col-5 p-0" :grade="food.grade"/>
+        <collection-display class="offset-5 col-1 p-0" :food="food"/>
+        <p class="col-12 p-0 m-0 fs-08rem" @click="toFoodPage" >{{ food.food_category }}</p>
+        <p class="name col-12 p-0 m-0">{{ food.food_name }}</p>
+        <p @click="toUserpage" class="users col-12 p-0 m-0 fs-08rem" >by {{ food.username }} <img @click="toUserpage" class="users-img rounded-circle"  :src="food.icon" alt="" /></p> 
+        
     </div>
   </div>
 </template>
@@ -47,160 +43,65 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
 .food-card {
-  width: 80vw;
-  height: 15vh;
+  height: 7.5rem;
+  // &::after {
+  //   content: "";
+  //   border: 2rem solid rgba(252, 0, 0, 0);
+  //   width: 0;
+  //   height: 0;
+  //   // background-color: #fff;
+  //   border-bottom: 2rem solid rgb(255, 255, 255);
+  //   position: absolute;
+  //   bottom: 0.5vh;
+  //   left: 3rem;
+  // }
+}
+.img {
+  z-index: 20;
+  height: 7.5rem;
   position: relative;
-  filter: $shadow;
-  .image {
-    z-index: 20;
-    position: absolute;
-    left: 5vw;
-    bottom: 1vh;
-    img {
-      width: 30vw;
-      height: 13vh;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .logo {
-      z-index: 25;
-      width: 4vw;
-      height: 4vw;
-      position: absolute;
-      bottom: -0.5vh;
-      left: 12vw;
-    }
-    &::after {
-      content: "";
-      border: 4vw solid rgba(252, 0, 0, 0);
-      width: 0;
-      height: 0;
-      // background-color: #fff;
-      border-bottom: 4vw solid rgb(255, 255, 255);
-      position: absolute;
-      bottom: 0.5vh;
-      left: 10vw;
-    }
-  }
-  .card {
-    width: 80vw;
-    height: 12vh;
-    position: absolute;
-    bottom: 0;
-    border-radius: 10px;
-    background-color: $textBgc;
-    padding: 1vh 0;
-    padding-left: 40vw;
-    box-sizing: border-box;
-    display: grid;
-    align-items: baseline;
-    .icon {
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-      .grade-Display {
-        width: 20vw;
-        height: 6vw;
-      }
-      .collection-display {
-        width: 4vw;
-        height: 4vw;
-      }
-    }
-    .text {
-      font-size: 0.6rem;
-      font-family: $fonts;
-      color: $fontColorlight;
-      img {
-        height: 2vh;
-        position: relative;
-        top: 0.5vh;
-      }
-      .users {
-        z-index: 50;
-      }
-      .name {
-        color: black;
-        font-size: 0.8rem;
-      }
-    }
-  }
 }
-@media only screen and (min-width: 1280px) {
-  .food-card {
-  width: 20vw;
-  height: 10vw;
-  .image {
-    left: 1vw;
-    bottom: 1vw;
-    &:hover{
-        cursor: pointer;
-      }
-    img {
-      width: 8vw;
-      height: 6vw;
-    }
-    .logo {
-      width: 1vw;
-      height: 1vw;
-      bottom: 0;
-      left: 3.5vw;
-    }
-    &::after {
-      border: 1.5vw solid rgba(252, 0, 0, 0);
-      border-bottom: 1.5vw solid rgb(255, 255, 255);
-      bottom: 0;
-      left: 2.5vw;
-    }
-  }
-  .card {
-    width: 20vw;
-    height: 8vw;
-    padding: 0.5vw 0;
-    padding-left: 10vw;
-    img{
-      &:hover{
-        cursor: pointer;
-      }
-    }
-    .icon {
-      width: 90%;
-      .grade-Display {
-        margin-top: 0.5em;
-        width: 3em;
-        height: 0.9em;
-      }
-      .collection-display {
-        width: 1vw;
-        height: 1vw;
-      }
-    }
-    .text {
-      font-size: 0.6rem;
-      font-family: $fonts;
-      color: $fontColorlight;
-      margin-top: -1em;
-      img {
-        height: 2vh;
-        position: relative;
-        top: 0.5vh;
-        border-radius: 50%;
-      }
-      .users {
-        z-index: 50;
-        &:hover{
-        cursor: pointer;
-      }
-      }
-      .name {
-        color: black;
-        font-size: 0.8rem;
-        &:hover{
-        cursor: pointer;
-      }
-      }
-    }
-  }
+.card-img {
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 10px;
+  height: 7.5rem;
+  object-fit: cover;
+  transform: translateY(-.5rem);
 }
+.card-logo {
+  z-index: 25;
+  width: 20%;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  transform: translate(200%,-2rem);
+}
+.name {
+  height: 2rem;
+  overflow: hidden;
+  line-height: 1rem;
+}
+.users-img{
+  height: 1rem;
+  object-fit: cover;
+  margin-top: -2px;
+}
+@media only screen and (min-width: 992px) {
+  .food-card{
+    width: 75%;
+  }
+//   .food-card::after {
+//     left: 3.5rem;
+  
+// }
+  // .card-img {
+  //   width: 9rem;
+  // }
+  //   .card-logo {
+  //     z-index: 25;
+  //     width: 1rem;
+  //     transform: translate(-5rem,2rem);
+  //   }
 }
 </style>

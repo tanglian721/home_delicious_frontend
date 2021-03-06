@@ -156,7 +156,7 @@ export default {
     }
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .edit-food {
     background-color: $bgc;
     margin-top: 0;

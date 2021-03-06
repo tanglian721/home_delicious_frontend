@@ -82,14 +82,14 @@ export default new Vuex.Store({
             return list
         },
         desktop() {
-            if (screen.width >= 1280) {
+            if (screen.width >= 992) {
                 return true
             } else {
                 false
             }
         },
         mobile() {
-            if (screen.width < 1280) {
+            if (screen.width < 992) {
                 return true
             } else {
                 false

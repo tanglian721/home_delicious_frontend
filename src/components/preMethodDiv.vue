@@ -178,7 +178,7 @@ export default {
     object-fit: cover;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .preMethod-div {
     width: 100%;
     display: grid;

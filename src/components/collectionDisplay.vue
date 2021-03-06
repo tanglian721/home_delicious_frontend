@@ -1,26 +1,26 @@
 <template>
   <div class="collection-display">
-    <div v-if="this.$store.getters.login">
+    <div class="heart w-100 mx-auto" v-if="this.$store.getters.login">
       <img
         v-if="collection"
         src="../assets/heart-r.png"
         alt=""
-        class="collection"
+        class="collection w-100"
         @click="deleteCollection"
       />
       <img
         v-else
         src="../assets/heart-b.png"
         alt=""
-        class="uncollection"
+        class="uncollection w-100"
         @click="addCollection"
       />
     </div>
-    <div v-else>
+    <div v-else class="heart w-100 mx-auto">
       <img
         src="../assets/heart-b.png"
         alt=""
-        class="collection"
+        class="collection w-100"
         @click="toLoginPage"
       />
     </div>
@@ -98,14 +98,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.collection-display {
-  width: 100%;
-  margin-top: 0.3em;
-  >div{
-    height: 100%;
-  img {
-    height: 100%;
-  }
-  }
+.heart{
+  margin-top: -20%;
 }
+
 </style>

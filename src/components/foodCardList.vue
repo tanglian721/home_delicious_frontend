@@ -1,5 +1,5 @@
 <template>
-  <div class="food-card-list">
+  <div class="food-card-list container py-5 mb-5">
     <food-card v-for="food in food_list" :key="food.food_id" :food="food"/>
   </div>
 </template>
@@ -63,7 +63,7 @@ export default {
     row-gap: 5vh;
     padding-bottom: 15vh;
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .food-card-list{
     margin-top: 3vh;
     row-gap: 5vh;

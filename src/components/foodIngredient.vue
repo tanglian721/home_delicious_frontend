@@ -48,7 +48,7 @@ export default {
     row-gap: 2vh;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .ingredient {
     margin: 2em 0;
     width: 100%;

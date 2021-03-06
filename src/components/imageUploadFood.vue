@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
-@import "https://unpkg.com/vuetify/dist/vuetify.min.css";
+// @import "https://unpkg.com/vuetify/dist/vuetify.min.css";
 
 .image-upload {
     font-family: $fonts;
@@ -74,7 +74,7 @@ export default {
     width: 100px;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   img{
     margin-left: -50%;
   }

@@ -52,7 +52,7 @@ export default {
       border-radius: 50%;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
 .rate-review {
   text-align: center;
   margin-top: 5vh;

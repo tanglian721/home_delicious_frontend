@@ -282,7 +282,7 @@ export default {
     }
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .food-page {
     // width: 100vw;
     // min-height: 100vh;

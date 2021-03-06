@@ -171,7 +171,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.267);
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .signup-part {
     .form {
       width: 40%;

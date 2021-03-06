@@ -1,0 +1,65 @@
+$theme-colors: ( "bgc":#F3F6F4, "barBgc":#D8E2DC, "redBgc":#FFCAD4, "fontColor":#3D5144, "test1":yellow, "test2":green);
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.h-35 {
+    height: 35% !important;
+}
+
+.title {
+    font-family: 'Caveat', cursive;
+}
+
+.text {
+    font-family: 'Rubik', sans-serif;
+}
+
+.fs-1rem {
+    font-size: 1rem;
+}
+
+.fs-08rem {
+    font-size: 0.8rem;
+}
+
+.fs-12rem {
+    font-size: 1.2rem;
+}
+
+.page-set {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+}
+
+.box-border {
+    box-sizing: border-box;
+}
+
+.card-frame {
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 5px #616161);
+    width: 90%;
+    position: relative;
+}
+
+.box-shadow {
+    filter: 1px 1px 5px #4141418e;
+}
+
+@media only screen and (min-width: 992px) {
+    .w-lg-50 {
+        width: 50% !important;
+    }
+    .bg-lg-primary {
+        background-color: #F3F6F4 !important;
+    }
+}
+
+@import "./bootstrap-5.0.0-beta2/scss/bootstrap.scss"

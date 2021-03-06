@@ -437,7 +437,7 @@ export default {
     border: 1px solid $fontColordark;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .method-div {
     padding: 5vh 0;
     width: 55vw;

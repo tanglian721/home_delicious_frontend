@@ -106,7 +106,7 @@ export default {
     align-self: center;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .prematerial-div {
     display: grid;
     grid-template-columns: 1fr 7fr 7fr 1fr;

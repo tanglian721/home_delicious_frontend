@@ -71,7 +71,7 @@ export default {
     justify-items: center;
   }
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 992px) {
   .login-page {
     .logo {
       img {
